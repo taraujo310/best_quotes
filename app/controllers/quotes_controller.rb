@@ -4,7 +4,7 @@ class QuotesController < Amy::Controller
   def index
     begin
       @quotes = Amy::Model::FileModel.all
-      render :index
+      render_response :index
     rescue => e
       puts e.inspect
     end
@@ -17,12 +17,12 @@ class QuotesController < Amy::Controller
       "attribution" => "Aristotle"
     })
 
-    render :quote
+    render_response :show
   end
 
   def show
     @quote = Amy::Model::FileModel.find(params["id"])
-    render :show
+    render_response :show
   end
 
   def exception
