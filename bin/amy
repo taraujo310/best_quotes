@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+APP_PATH = File.expand_path("../config/application", __dir__)
+
+command, *options = ARGV
+
+puts command, options
+
+case command
+when /(serve|s)/i
+  puts "starting server"
+  system("bundle exec rerun -- rackup -p 3001")
+when /(console|c)/
+  puts "starting console"
+  system("bundle exec irb -r rr-amy -r #{APP_PATH} --colorize --autocomplete")
+else
+  puts "Unkown option"
+end
