@@ -20,19 +20,9 @@ class QuotesController < Amy::Controller
     render :quote
   end
 
-  def a_quote
-    @quote = "Do or do not. There is no try. - Yoda"
-    render :a_quote
-  end
-
-  def quote_1
-    @quote = Amy::Model::FileModel.find(1)
-    render :quote
-  end
-
-  def quote_2
-    @quote = Amy::Model::FileModel.find(2)
-    render :quote
+  def show
+    @quote = Amy::Model::FileModel.find(params["id"])
+    render :show
   end
 
   def exception
